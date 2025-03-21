@@ -62,6 +62,10 @@
 
 	AddComponent(/datum/component/plumbing/simple_demand, bolt, layer)
 
+/obj/machinery/plumbing/pill_press/Destroy()
+	QDEL_LAZYLIST(stored_products)
+	return ..()
+
 /obj/machinery/plumbing/pill_press/examine(mob/user)
 	. = ..()
 	. += span_notice("The [name] currently has [stored_products.len] stored. There needs to be less than [MAX_FLOOR_PRODUCTS] on the floor to continue dispensing.")
